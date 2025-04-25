@@ -1,0 +1,14 @@
+/* style.css */
+
+body {
+    font-family: sans-serif;
+    color:aqua;
+    background-color: #6198ea;
+    padding: 20px;
+    border: 2px solid red;
+    border-radius: 25px;
+}
+
+#feed {
+    margin-top: 30px;
+}
