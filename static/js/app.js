@@ -1,4 +1,7 @@
-const username = "admin";
+let username = localStorage.getItem("username");
+if (!username) {
+  window.location.href = "/login";
+}
 
 function renderPost(post, isNew = false) {
     const template = document
@@ -40,3 +43,14 @@ function renderPost(post, isNew = false) {
       console.error("Error fetching posts:", error);
     }
   };
+
+  setInterval(async () => {
+    try {
+      const response = await fetch("/api/posts");
+      const posts = await response.json();
+      document.getElementById("feed").innerHTML = ""; // Clear the feed before rendering new post
+      posts.forEach((post) => renderPost(post));
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  }, 5000); // 5 seconds
